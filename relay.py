@@ -10,36 +10,23 @@ for i in pinList:
 	GPIO.output(i,GPIO.HIGH)
 
 
-SleepTimeL =2
+SleepTimeL =1
 
 try:
 
-	GPIO.output(14,GPIO.LOW)
-	print "one"
+	varRelay = input('Please enter a number between 1-8') 
+	varCommand = input('Please enter Command')
+	if varCommand == "ON":
+		print "Turning ON ..." + varRelay
+		GPIO.output(varRelay,GPIO.LOW)
+		print "Turning ON ..." + varRelay + ".... OK"
+	else: 
+		print "Turning OFF ..." + varRelay
+		GPIO.output(varRelay,GPIO.HIGH)
+		print "Turning OFF ..." + varRelay + ".... OK"
 	time.sleep(SleepTimeL);
-
-	GPIO.output(14,GPIO.HIGH)
-        print "one closed"
-        time.sleep(SleepTimeL);
-	
-	GPIO.output(15,GPIO.LOW)
-        print "15 closed"
-        time.sleep(SleepTimeL);
-
-	GPIO.output(18,GPIO.LOW)
-	print "15 closed"
-	time.sleep(SleepTimeL);
-
-	GPIO.output(23,GPIO.LOW)
-        print "15 closed"
-        time.sleep(SleepTimeL);
-
-	GPIO.output(24,GPIO.LOW)
-        print "15 closed"
-        time.sleep(SleepTimeL);
-
 
 except KeyboardInterrupt:
-	print "Quit"
+print "Quit"
 
 GPIO.cleanup()
