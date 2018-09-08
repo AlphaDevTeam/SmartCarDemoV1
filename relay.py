@@ -14,20 +14,20 @@ SleepTimeL =1
 
 try:
 
-	varRelay = input('Please enter a number between 1-8 : ') 
-	varCommand = raw_input('Please enter Command : ').lower().split(' ')
-	print "Command received ..." , varCommand[0]
-	if varCommand[0] == "on":
-		print "Turning ON ..." , varRelay
-		GPIO.output(int(varRelay),GPIO.LOW)
-		print "Turning ON ..." + str(varRelay) + ".... OK"
-	else: 
-		print "Turning OFF ..." , varRelay
-		GPIO.output(int(varRelay),GPIO.HIGH)
-		print "Turning OFF ..." + str(varRelay) + ".... OK"
-	time.sleep(SleepTimeL);
+	while True:
+		varRelay = input('Please enter a number between 1-8 : ') 
+		varCommand = raw_input('Please enter Command : ').lower().split(' ')
+		print "Command received ..." , varCommand[0]
+		if varCommand[0] == "on":
+			print "Turning ON ..." , varRelay
+			GPIO.output(int(varRelay),GPIO.LOW)
+			print "Turning ON ..." + str(varRelay) + ".... OK"
+		else: 
+			print "Turning OFF ..." , varRelay
+			GPIO.output(int(varRelay),GPIO.HIGH)
+			print "Turning OFF ..." + str(varRelay) + ".... OK"
+		time.sleep(SleepTimeL);
 
-except KeyboardInterrupt:
-	print "Quit"
-
-GPIO.cleanup()
+	except KeyboardInterrupt:
+		print "Quit"
+		GPIO.cleanup()
