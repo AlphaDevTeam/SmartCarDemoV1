@@ -27,6 +27,6 @@ try:
 	time.sleep(SleepTimeL);
 
 except KeyboardInterrupt:
-print "Quit"
+	print "Quit"
 
 GPIO.cleanup()
