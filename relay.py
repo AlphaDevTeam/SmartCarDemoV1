@@ -17,13 +17,13 @@ try:
 	varRelay = input('Please enter a number between 1-8 : ') 
 	varCommand = raw_input('Please enter Command : ').lower().split(' ')
 	if varCommand == "on":
-		print "Turning ON ..." + varRelay
-		GPIO.output(varRelay,GPIO.LOW)
-		print "Turning ON ..." + varRelay + ".... OK"
+		print "Turning ON ..." , varRelay
+		GPIO.output(int(varRelay),GPIO.LOW)
+		print "Turning ON ..." + str(varRelay) + ".... OK"
 	else: 
-		print "Turning OFF ..." + varRelay
-		GPIO.output(varRelay,GPIO.HIGH)
-		print "Turning OFF ..." + varRelay + ".... OK"
+		print "Turning OFF ..." , varRelay
+		GPIO.output(int(varRelay),GPIO.HIGH)
+		print "Turning OFF ..." + str(varRelay) + ".... OK"
 	time.sleep(SleepTimeL);
 
 except KeyboardInterrupt:
