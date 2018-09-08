@@ -28,6 +28,6 @@ try:
 			print "Turning OFF ..." + str(varRelay) + ".... OK"
 		time.sleep(SleepTimeL);
 
-	except KeyboardInterrupt:
-		print "Quit"
-		GPIO.cleanup()
+except KeyboardInterrupt:
+	print "Quit"
+	GPIO.cleanup()
