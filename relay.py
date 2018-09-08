@@ -14,9 +14,9 @@ SleepTimeL =1
 
 try:
 
-	varRelay = input('Please enter a number between 1-8') 
-	varCommand = input('Please enter Command')
-	if varCommand == "ON":
+	varRelay = input('Please enter a number between 1-8 : ') 
+	varCommand = raw_input('Please enter Command : ').lower().split(' ')
+	if varCommand == "on":
 		print "Turning ON ..." + varRelay
 		GPIO.output(varRelay,GPIO.LOW)
 		print "Turning ON ..." + varRelay + ".... OK"
