@@ -17,16 +17,16 @@ try:
 
   for i in pinList:
     if i == 24:
-      print "Engine ON ..." , varRelay
-		  GPIO.output(int(varRelay),GPIO.LOW)
-      time.sleep(EngineStartupDelay);
-		  print "Engine ON ..." + str(varRelay) + ".... OK"
+	print "Engine ON ..." , varRelay
+	GPIO.output(int(varRelay),GPIO.LOW)
+	time.sleep(EngineStartupDelay);
+	print "Engine ON ..." + str(varRelay) + ".... OK"
     else:
-      print "Turning ON ..." , varRelay
-			GPIO.output(int(varRelay),GPIO.LOW)
-			time.sleep(SleepTimeL);
-      print "Turning ON ..." + str(varRelay) + ".... OK"
-    
+	print "Turning ON ..." , varRelay
+	GPIO.output(int(varRelay),GPIO.LOW)
+	time.sleep(SleepTimeL);
+	print "Turning ON ..." + str(varRelay) + ".... OK"
+ 
   while True:
 		varRelay = input('Please enter a number between 1-8 : ') 
 		varCommand = raw_input('Please enter Command : ').lower().split(' ')
