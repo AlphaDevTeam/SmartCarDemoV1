@@ -10,17 +10,21 @@ for i in pinList:
 	GPIO.output(i,GPIO.HIGH)
 
 
-SleepTimeL =1
-EngineStartupDelay = 0.5
+SleepTimeL =2
+EngineStartupDelay = 1
 
 try:
 
   for i in pinList:
     if i == 24:
-	print "Engine ON ..." , i
+	print "Engine ON Singal..." , i
 	GPIO.output(int(i),GPIO.LOW)
 	time.sleep(EngineStartupDelay);
-	print "Engine ON ..." + str(i) + ".... OK"
+	print "Engine ON Signal..." + str(i) + ".... OK"
+	print "Engine ON Signal Cutoff..." , i
+	GPIO.output(int(i),GPIO.HIGH)
+	time.sleep(EngineStartupDelay);
+	print "Engine ON Signal Cutoff..." + str(i) + ".... OK"
     else:
 	print "Turning ON ..." , i
 	GPIO.output(int(i),GPIO.LOW)
