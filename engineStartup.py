@@ -39,7 +39,7 @@ try:
 			print "Turning OFF ..." , varRelay
 			GPIO.output(int(varRelay),GPIO.HIGH)
 			print "Turning OFF ..." + str(varRelay) + ".... OK"
-		  time.sleep(SleepTimeL);
+		  	time.sleep(SleepTimeL);
 
 except KeyboardInterrupt:
 	print "Quit"
