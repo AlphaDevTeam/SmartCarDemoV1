@@ -9,9 +9,9 @@ try:
     time.sleep(1)
     
     phone.write(b'ATD777117477;\r')
-    rcv = phone.read(10)
+    rcv = phone.read(15)
     print "\r\nYou sent:" + repr(rcv) 
-    time.sleep(6)
+    time.sleep(20)
     
 finally:
     phone.close()
