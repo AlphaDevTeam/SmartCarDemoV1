@@ -1,8 +1,12 @@
 import serial
 
-port = serial.Serial("/dev/ttyAMA0", baudrate=115200, timeout=3.0)
-
-while True:
-    port.write("\r\nSay something:")
-    rcv = port.read(10)
-    port.write("\r\nYou sent:" + repr(rcv))
+phone = serial.Serial("/dev/ttyS0", baudrate=115200, timeout=5.0)
+try:
+    time.sleep(1)
+    phone.write(b'AT\r')
+    rcv = phone.read(10)
+    print "\r\nYou sent:" + repr(rcv) 
+    time.sleep(1)
+    
+finally:
+    phone.close()
