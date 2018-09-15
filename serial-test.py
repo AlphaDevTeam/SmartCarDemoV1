@@ -1,5 +1,5 @@
 import serial
-
+import time
 phone = serial.Serial("/dev/ttyS0", baudrate=115200, timeout=5.0)
 try:
     time.sleep(1)
