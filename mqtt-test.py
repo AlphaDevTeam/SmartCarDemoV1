@@ -53,6 +53,16 @@ try:
     print "\r\nYou sent:" + repr(rcv) 
     time.sleep(0.5)
     phone.write("\x1A\r\n")
+    time.sleep(0.5)
+    phone.write(serial.to_bytes([0x82,0x0B,0x0,0x1,0x0,0x8,0x2F,0x68,0x65,0x6C,0x6C,0x6F,0x0]))
+    rcv = phone.read(50)
+    print "\r\nYou sent:" + repr(rcv) 
+    time.sleep(0.5)
+    phone.write("\x1A\r\n")
+    
+    while True:
+		rcv = phone.read(50)
+        print "\r\nReceived:" + repr(rcv)
 finally:
     phone.close()
     
