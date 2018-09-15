@@ -25,6 +25,7 @@ try:
 	GPIO.output(int(i),GPIO.HIGH)
 	time.sleep(EngineStartupDelay);
 	print "Engine ON Signal Cutoff..." + str(i) + ".... OK"
+	time.sleep(SleepTimeL);
     else:
 	print "Turning ON ..." , i
 	GPIO.output(int(i),GPIO.LOW)
