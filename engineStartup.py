@@ -11,7 +11,7 @@ for i in pinList:
 
 
 SleepTimeL =2
-EngineStartupDelay = 0.5
+EngineStartupDelay = 0.7
 
 try:
 
