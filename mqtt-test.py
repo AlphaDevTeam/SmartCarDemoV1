@@ -54,6 +54,7 @@ try:
     time.sleep(0.5)
     phone.write("\x1A\r\n")
     time.sleep(0.5)
+    phone.write(b'AT+CIPSEND\r')
     phone.write(serial.to_bytes([0x30,0xA,0x0,0x6,0x2F,0x68,0x65,0x6C,0x6C,0x6F,0x4F,0x4E]))
     rcv = phone.read(50)
     print "\r\nYou sent:" + repr(rcv) 
