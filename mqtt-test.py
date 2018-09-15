@@ -4,7 +4,7 @@ import serial
 recipient = "+94777117477"
 message = "Hello, World!"
 
-phone = serial.Serial("/dev/ttyS0", baudrate=115200, timeout=5.0)
+phone = serial.Serial("/dev/ttyS0", baudrate=115200, timeout=1.0)
 try:
     time.sleep(0.5)
     phone.write(b'ATZ\r')
@@ -47,14 +47,14 @@ try:
     time.sleep(0.5)
     phone.write(b'AT+CIPSEND\r')
     rcv = phone.read(50)
-    print "\r\nYou sent:" + repr(rcv) 
-    phone.write(serial.to_bytes([0x30,0xA,0x0,0x6,0x2F,0x68,0x65,0x6C,0x6C,0x6F,0x4F,0x4E]))
+    print "\r\nYou sent:" + repr(rcv)
+    phone.write(serial.to_bytes([0x82,0x0B,0x0,0x1,0x0,0x6,0x2F,0x68,0x65,0x6C,0x6C,0x6F,0x0]))
     rcv = phone.read(50)
     print "\r\nYou sent:" + repr(rcv) 
     time.sleep(0.5)
     phone.write("\x1A\r\n")
     time.sleep(0.5)
-    phone.write(serial.to_bytes([0x82,0x0B,0x0,0x1,0x0,0x6,0x2F,0x68,0x65,0x6C,0x6C,0x6F,0x0]))
+    phone.write(serial.to_bytes([0x30,0xA,0x0,0x6,0x2F,0x68,0x65,0x6C,0x6C,0x6F,0x4F,0x4E]))
     rcv = phone.read(50)
     print "\r\nYou sent:" + repr(rcv) 
     time.sleep(0.5)
