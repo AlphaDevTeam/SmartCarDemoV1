@@ -1,5 +1,5 @@
 import time
-from serial import serial
+import serial
 
 recipient = "+94777117477"
 message = "Hello, World!"
