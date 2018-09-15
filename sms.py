@@ -27,6 +27,6 @@ try:
     rcv = phone.read(10)
     print "\r\nYou sent:" + repr(rcv) 
     time.sleep(0.5)
-    phone.write(char.ConvertFromUtf32(26))
+    phone.write("\x1A\r\n")
 finally:
     phone.close()
