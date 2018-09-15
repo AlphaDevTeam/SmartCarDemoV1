@@ -62,7 +62,7 @@ try:
     
     while True:
 	rcv = phone.read(50)
-        print "\r\nReceived:" + repr(rcv)
+	print "\r\nReceived:" + repr(rcv)
 	time.sleep(0.5)
 finally:
     phone.close()
