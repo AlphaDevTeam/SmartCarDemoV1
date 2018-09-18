@@ -42,10 +42,11 @@ def initiateRemoteStart():
 	executeCommand(18,"on")
 	time.sleep(1.5);
 	executeCommand(16,"short")
+	time.sleep(1.5);
 	executeCommand(23,"on")
+	time.sleep(1.5);
 	switchDoorSensor("manual")
-  
-  
+	time.sleep(1.5);  
 
 def executeCommand(pin,command):
 	print(command + " Received")
