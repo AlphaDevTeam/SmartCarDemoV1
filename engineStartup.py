@@ -18,7 +18,7 @@ for i in pinList:
 	GPIO.output(i,GPIO.HIGH)
 
 
-defaultDelay = 0.5
+defaultDelay = 1
 engineStartupDelay = 0.7
 
 def switchDoorSensor(command):
@@ -40,7 +40,7 @@ def initiateRemoteStart():
 	closeLock()
 	executeCommand(12,"on")
 	executeCommand(18,"on")
-	time.sleep(2);
+	time.sleep(1.5);
 	executeCommand(16,"short")
 	executeCommand(23,"on")
 	switchDoorSensor("manual")
@@ -82,7 +82,7 @@ try:
 			print "Turning OFF ..." , varRelay
 			GPIO.output(int(varRelay),GPIO.HIGH)
 			print "Turning OFF ..." + str(varRelay) + ".... OK"
-		  	time.sleep(SleepTimeL);
+		  	time.sleep(defaultDelay);
 
 except KeyboardInterrupt:
 	print "Quit"
