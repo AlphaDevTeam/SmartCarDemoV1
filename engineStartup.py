@@ -18,7 +18,7 @@ for i in pinList:
 	GPIO.output(i,GPIO.HIGH)
 
 
-defaultDelay = 1
+defaultDelay = 0.5
 engineStartupDelay = 0.7
 
 def switchDoorSensor(command):
@@ -44,9 +44,7 @@ def initiateRemoteStart():
 	executeCommand(16,"short")
 	time.sleep(1.5);
 	executeCommand(23,"on")
-	time.sleep(1.5);
 	switchDoorSensor("default")
-	time.sleep(1.5);
 	print "Engine Startup...... [DONE]"
 
 def executeCommand(pin,command):
@@ -64,7 +62,7 @@ def executeCommand(pin,command):
 		print "Sending Short Burst " + str(pin) + ".... OK"
 	else :
 		print "Sending OFF Singal..." , pin
-		GPIO.output(int(pin),GPIO.LOW)
+		GPIO.output(int(pin),GPIO.HIGH)
 		time.sleep(int(defaultDelay));
 		print "Sending OFF Signal..." + str(pin) + ".... OK"
 	
