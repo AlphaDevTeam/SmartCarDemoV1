@@ -23,7 +23,7 @@ try:
 			print "Turning ON ..." , varRelay
 			GPIO.output(int(varRelay),GPIO.LOW)
 			print "Turning ON ..." + str(varRelay) + ".... OK"
-		else if varCommand[0] == "engine": 
+		elif varCommand[0] == "engine": 
 			print "Turning ON ... Short Burst " , varRelay
 			GPIO.output(int(varRelay),GPIO.LOW)
 			time.sleep(EngineSleepTimeL);
