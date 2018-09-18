@@ -76,7 +76,7 @@ try:
 			print "Turning ON ..." , varRelay
 			GPIO.output(int(varRelay),GPIO.LOW)
 			print "Turning ON ..." + str(varRelay) + ".... OK"
-		elif varCommand[0] == "start"
+		elif varCommand[0] == "start":
 			initiateRemoteStart()
 		else: 
 			print "Turning OFF ..." , varRelay
