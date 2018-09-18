@@ -11,6 +11,7 @@ for i in pinList:
 
 
 SleepTimeL =1
+EngineSleepTimeL = 0.6
 
 try:
 
@@ -22,11 +23,16 @@ try:
 			print "Turning ON ..." , varRelay
 			GPIO.output(int(varRelay),GPIO.LOW)
 			print "Turning ON ..." + str(varRelay) + ".... OK"
-		else: 
+		else if varCommand[0] == "engine": 
+			print "Turning ON ... Short Burst " , varRelay
+			GPIO.output(int(varRelay),GPIO.LOW)
+			time.sleep(EngineSleepTimeL);
+			GPIO.output(int(varRelay),GPIO.HIGH)
+			print "Turning OFF ... EngineSleepTimeL " + str(varRelay) + ".... OK"
+		else : 
 			print "Turning OFF ..." , varRelay
 			GPIO.output(int(varRelay),GPIO.HIGH)
 			print "Turning OFF ..." + str(varRelay) + ".... OK"
-		time.sleep(SleepTimeL);
 
 except KeyboardInterrupt:
 	print "Quit"
