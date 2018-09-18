@@ -22,7 +22,7 @@ defaultDelay = 1
 engineStartupDelay = 0.7
 
 def switchDoorSensor(command):
-	if command == "manual":
+	if command == "default":
 		executeCommand(24,"off")
 		executeCommand(25,"off")
 	elif command == "auto":
@@ -45,8 +45,9 @@ def initiateRemoteStart():
 	time.sleep(1.5);
 	executeCommand(23,"on")
 	time.sleep(1.5);
-	switchDoorSensor("manual")
-	time.sleep(1.5);  
+	switchDoorSensor("default")
+	time.sleep(1.5);
+	print "Engine Startup...... [DONE]"
 
 def executeCommand(pin,command):
 	print(command + " Received")
