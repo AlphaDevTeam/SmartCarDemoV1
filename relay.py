@@ -3,7 +3,7 @@ import time
 
 GPIO.setmode(GPIO.BCM)
 
-pinList = [14,15,18,23,24,25,8,21] 
+pinList = [8,23,24,25,8,7,12,16] 
 
 for i in pinList:
 	GPIO.setup(i,GPIO.OUT)
