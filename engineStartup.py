@@ -3,36 +3,74 @@ import time
 
 GPIO.setmode(GPIO.BCM)
 
-pinList = [14,15,18,24,23] 
+pinList = [18,23,24,25,8,7,12,16] 
+
+#24-25 - Manual / Auto Door Sensor Switcher
+#8 - Lock Open
+#7 - Lock Close
+#12 - Ignition 
+#18 - Accesories
+#23 - Blower
+#16 - Engine Start
 
 for i in pinList:
 	GPIO.setup(i,GPIO.OUT)
 	GPIO.output(i,GPIO.HIGH)
 
 
-SleepTimeL =2
-EngineStartupDelay = 0.7
+defaultDelay = 0.5
+engineStartupDelay = 0.7
+
+def switchDoorSensor(command):
+	if command == "manual":
+		executeCommand(24,"off")
+		executeCommand(25,"off")
+	elif command == "auto":
+		executeCommand(24,"on")
+		executeCommand(25,"on")
+	
+def openLock():
+	executeCommand(8,"short")
+
+def closeLock():
+	executeCommand(7,"short")
+	
+def initiateRemoteStart():
+	switchDoorSensor("auto")
+	closeLock()
+	executeCommand(12,"on")
+	executeCommand(18,"on")
+	executeCommand(16,"short")
+	executeCommand(23,"on")
+	switchDoorSensor("manual")
+  
+  
+
+def executeCommand(pin,command):
+	print(command + " Received")
+	if command == "on":
+		print "Sending ON Singal..." , pin
+		GPIO.output(int(pin),GPIO.LOW)
+		time.sleep(int(defaultDelay));
+		print "Sending ON Signal..." + str(pin) + ".... OK"
+	elif command =="short":
+		print "Sending Short Burst " , pin
+		GPIO.output(int(pin),GPIO.LOW)
+		time.sleep(engineStartupDelay);
+		GPIO.output(int(pin),GPIO.HIGH)
+		print "Sending Short Burst " + str(pin) + ".... OK"
+	else :
+		print "Sending OFF Singal..." , pin
+		GPIO.output(int(pin),GPIO.LOW)
+		time.sleep(int(defaultDelay));
+		print "Sending OFF Signal..." + str(pin) + ".... OK"
+	
 
 try:
-
-  for i in pinList:
-    if i == 24:
-	print "Engine ON Singal..." , i
-	GPIO.output(int(i),GPIO.LOW)
-	time.sleep(EngineStartupDelay);
-	print "Engine ON Signal..." + str(i) + ".... OK"
-	print "Engine ON Signal Cutoff..." , i
-	GPIO.output(int(i),GPIO.HIGH)
-	time.sleep(EngineStartupDelay);
-	print "Engine ON Signal Cutoff..." + str(i) + ".... OK"
-	time.sleep(SleepTimeL);
-    else:
-	print "Turning ON ..." , i
-	GPIO.output(int(i),GPIO.LOW)
-	time.sleep(SleepTimeL);
-	print "Turning ON ..." + str(i) + ".... OK"
- 
-  while True:
+	
+	initiateRemoteStart()
+	
+	while True:
 		varRelay = input('Please enter a number between 1-8 : ') 
 		varCommand = raw_input('Please enter Command : ').lower().split(' ')
 		print "Command received ..." , varCommand[0]
