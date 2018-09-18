@@ -40,7 +40,7 @@ def initiateRemoteStart():
 	closeLock()
 	executeCommand(12,"on")
 	executeCommand(18,"on")
-	time.sleep(1);
+	time.sleep(2);
 	executeCommand(16,"short")
 	executeCommand(23,"on")
 	switchDoorSensor("manual")
@@ -68,9 +68,6 @@ def executeCommand(pin,command):
 	
 
 try:
-	
-	initiateRemoteStart()
-	
 	while True:
 		varRelay = input('Please enter a number between 1-8 : ') 
 		varCommand = raw_input('Please enter Command : ').lower().split(' ')
@@ -79,6 +76,8 @@ try:
 			print "Turning ON ..." , varRelay
 			GPIO.output(int(varRelay),GPIO.LOW)
 			print "Turning ON ..." + str(varRelay) + ".... OK"
+		elif varCommand[0] == "start"
+			initiateRemoteStart()
 		else: 
 			print "Turning OFF ..." , varRelay
 			GPIO.output(int(varRelay),GPIO.HIGH)
