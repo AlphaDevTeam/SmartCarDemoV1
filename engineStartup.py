@@ -18,7 +18,7 @@ for i in pinList:
 	GPIO.output(i,GPIO.HIGH)
 
 
-defaultDelay = 0.5
+defaultDelay = 1
 engineStartupDelay = 0.7
 
 def switchDoorSensor(command):
