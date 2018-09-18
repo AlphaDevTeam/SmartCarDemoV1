@@ -18,7 +18,7 @@ for i in pinList:
 	GPIO.output(i,GPIO.HIGH)
 
 
-defaultDelay = 1
+defaultDelay = 0.5
 engineStartupDelay = 0.7
 
 def switchDoorSensor(command):
@@ -40,6 +40,7 @@ def initiateRemoteStart():
 	closeLock()
 	executeCommand(12,"on")
 	executeCommand(18,"on")
+	time.sleep(1);
 	executeCommand(16,"short")
 	executeCommand(23,"on")
 	switchDoorSensor("manual")
