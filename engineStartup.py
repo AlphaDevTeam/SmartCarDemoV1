@@ -3,7 +3,8 @@ import time
 
 GPIO.setmode(GPIO.BCM)
 
-pinList = [18,23,24,25,8,7,12,16] 
+pinList = [18,23,24,25,8,7,12,16]
+obdCommandList = [18,23,24,25,8,7,12,16] 
 
 #24-25 - Manual / Auto Door Sensor Switcher
 #8 - Lock Open
@@ -65,6 +66,23 @@ def executeCommand(pin,command):
 		GPIO.output(int(pin),GPIO.HIGH)
 		time.sleep(int(defaultDelay));
 		print "Sending OFF Signal..." + str(pin) + ".... OK"
+
+import obd
+
+
+connection = obd.OBD("/dev/rfcomm0")
+
+cmdList = obd.commands.PIDS_C 
+cmd = obd.commands.RPM # select an OBD command (sensor)
+cmdVoltage = obd.commands.CONTROL_MODULE_VOLTAGE
+responseList = connection.query(cmdList)
+response = connection.query(cmd) # send the command, and parse the response
+responseVoltage = connection.query(cmdVoltage)
+
+
+print(response.value) # returns unit-bearing values thanks to Pint
+print(responseList.value)
+print(responseVoltage.value)
 	
 
 try:
