@@ -75,18 +75,21 @@ connection = obd.OBD("/dev/rfcomm0")
 cmdList = obd.commands.PIDS_C 
 cmd = obd.commands.RPM # select an OBD command (sensor)
 cmdVoltage = obd.commands.CONTROL_MODULE_VOLTAGE
-responseList = connection.query(cmdList)
-response = connection.query(cmd) # send the command, and parse the response
-responseVoltage = connection.query(cmdVoltage)
 
-
-print(response.value) # returns unit-bearing values thanks to Pint
-print(responseList.value)
-print(responseVoltage.value)
 	
 
 try:
 	while True:
+		
+		responseList = connection.query(cmdList)
+		response = connection.query(cmd) # send the command, and parse the response
+		responseVoltage = connection.query(cmdVoltage)
+
+
+		print(response.value) # returns unit-bearing values thanks to Pint
+		print(responseList.value)
+		print(responseVoltage.value)
+		
 		varRelay = input('Please enter a number between 1-8 : ') 
 		varCommand = raw_input('Please enter Command : ').lower().split(' ')
 		print "Command received ..." , varCommand[0]
